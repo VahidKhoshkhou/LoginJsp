@@ -12,10 +12,24 @@
      
     ServizioRegistrazione su=new ServizioRegistrazione();
     
+   
+    
     if(utente.isValid() == true){
     	
     	// allora registrazione era con successo 
     	
+    	// prendo password che stata inserito da utente 
+    	String pass= utente.getPassword();
+    	
+    	// lo modifica con algoritmo di codifica
+    	pass=su.convertiPass(pass);
+    	
+    	// lo setto di nuovo dentro bean 
+    	
+    	utente.setPassword(pass);
+    	
+    	// e dopo salvo utente dentro db 
+    
     	su.registraUtente(utente);
     	
     	%>
