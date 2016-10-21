@@ -22,7 +22,7 @@
     	String pass= utente.getPassword();
     	
     	// lo modifica con algoritmo di codifica
-    	pass=su.convertiPass(pass);
+    	pass=su.convertiPass(pass); 
     	
     	// lo setto di nuovo dentro bean 
     	

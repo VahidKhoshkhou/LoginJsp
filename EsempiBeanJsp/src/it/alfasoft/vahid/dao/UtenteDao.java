@@ -1,5 +1,7 @@
 package it.alfasoft.vahid.dao;
 
+import java.util.List;
+
 import it.alfasoft.vahid.bean.UtenteBean;
 
 import org.hibernate.Query;
@@ -81,6 +83,40 @@ public class UtenteDao {
 	   }
 	
 	// 2-b R : Read tutti 
+   
+   @SuppressWarnings("unchecked")
+public List<UtenteBean> getTuttiUtenti(){
+	   
+	
+	   List<UtenteBean> utenti=null;
+	   
+	   Session session= HibernateUtil.openSession();
+	   
+	   Transaction tx = null;
+		try {
+			tx = session.getTransaction();
+			tx.begin();
+
+			
+		 Query query= session.createQuery("from UtenteBean");
+			
+		 utenti=query.list();
+			tx.commit();
+		 
+			
+		} catch (Exception ex) {
+			if (tx != null) {
+				tx.rollback();
+			}
+		} finally {
+			session.close();
+		}
+	   
+	
+	   return utenti;
+	   
+   }
+
 	
 	//3-   U : update 
 	
